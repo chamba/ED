@@ -27,6 +27,8 @@ function L_ISEMPTY(var L: lista): Boolean;
 function L_LASTINDEXOF(var L: lista; e: integer): integer;
 {return the number of elements}
 function L_SIZE(var L: lista): integer;
+{return number of occurrences of the given number, -1 if not found}
+function L_OCCURRENCES(var L: lista; e:integer): integer;
 
 IMPLEMENTATION
 
@@ -180,6 +182,25 @@ Begin
         L_SIZE:= i;
         end
         else L_SIZE:= -1;
+end;
+
+function L_OCCURRENCES(var L: lista; e:integer): integer;
+var
+  i,c: integer;
+  aux: lista;
+begin
+     c:=0;
+     new(aux);
+     aux:= L;
+     for i:=1 to L_SIZE(L) do
+         begin
+         if (aux^.d = e) then inc(c);
+         aux:= aux^.sig;
+         end;
+     if (c = 0)
+        then L_OCCURRENCES:= -1
+        else L_OCCURRENCES:= c;
+
 end;
 
 END.

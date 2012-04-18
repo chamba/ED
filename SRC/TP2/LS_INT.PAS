@@ -48,7 +48,18 @@ begin
 end;
 
 procedure L_REMOVE_ALL(var L: lista);
+var
+   aux: lista;
+   p: pointer;
 Begin
+     aux:= L;
+     while (aux <> nil ) do
+           begin
+           p:= aux^.sig;
+           dispose(aux);
+           aux:= p;
+           end;
+     L:= nil;
 end;
 
 procedure L_ADD(var L:lista; e: integer);

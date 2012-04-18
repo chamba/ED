@@ -37,11 +37,17 @@ BEGIN
      {find occurrences}
      writeln('element ',c,' was found: ',L_OCCURRENCES(l,c));
 
+     {print reversed}
      writeln;
      writeln('reversed order: ');
      L_REVERSE(l,laux);
      for c:=1 to L_SIZE(laux) do writeln(L_GET(laux,c));
 
+     {print subrange from index 3 to 6}
+     writeln;
+     writeln('sub list: ');
+     L_SUB(l,laux,3,6);
+     for c:=1 to L_SIZE(laux) do writeln(L_GET(laux,c));
 
      readln;
 END.

@@ -31,6 +31,9 @@ function L_SIZE(var L: lista): integer;
 function L_OCCURRENCES(var L: lista; e:integer): integer;
 {return a reverse list}
 procedure L_REVERSE(var L,E: lista);
+{return sub list from n1 to n2}
+procedure L_SUB(var L,E: lista; n1,n2: integer);
+
 
 IMPLEMENTATION
 
@@ -214,5 +217,15 @@ begin
      for i:=L_SIZE(L) downto 1 do
          L_ADD(E,L_GET(L,i));
 end;
+
+procedure L_SUB(var L,E: lista; n1,n2: integer);
+var
+   i: integer;
+begin
+     L_REMOVE_ALL(E);
+     for i:=n1 to n2 do
+         L_ADD(E,L_GET(L,i));
+end;
+
 
 END.

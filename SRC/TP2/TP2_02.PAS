@@ -26,8 +26,10 @@ BEGIN
            }
            end;
 
-     {calculate sum and print}
-     for n:=1 to L_SIZE(l) do inc(c,L_GET(l,n));
-     writeln('sum of terms is ', c);
+     writeln;
+     write('find?: ');
+     readln(c);
+     {find element}
+     writeln('element ',c,' is at pos: ',L_INDEXOF(l,c));
      readln;
 END.

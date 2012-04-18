@@ -106,15 +106,15 @@ Begin
 
      {check out of bounds, if so exit}
      isError:= false;
-     if (pos<=0) then isError:= true;
-     if (pos>=L_SIZE(l)) then isError:= true;
+     if (pos<1) then isError:= true;
+     if (pos>L_SIZE(l)) then isError:= true;
      if isError then RunError(201);
 
 
      new(tmpL);
      tmpL:= L;
 
-     for i:=0 to pos-1 do tmpL:= tmpL^.sig;
+     for i:=1 to pos-1 do tmpL:= tmpL^.sig;
 
      L_GET:= tmpL^.d;
 end;

@@ -29,6 +29,8 @@ function L_LASTINDEXOF(var L: lista; e: integer): integer;
 function L_SIZE(var L: lista): integer;
 {return number of occurrences of the given number, -1 if not found}
 function L_OCCURRENCES(var L: lista; e:integer): integer;
+{return a reverse list}
+procedure L_REVERSE(var L,E: lista);
 
 IMPLEMENTATION
 
@@ -201,6 +203,16 @@ begin
         then L_OCCURRENCES:= -1
         else L_OCCURRENCES:= c;
 
+end;
+
+procedure L_REVERSE(var L,E: lista);
+var
+   i: integer;
+begin
+     L_REMOVE_ALL(E);
+
+     for i:=L_SIZE(L) downto 1 do
+         L_ADD(E,L_GET(L,i));
 end;
 
 END.

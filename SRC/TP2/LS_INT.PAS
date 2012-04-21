@@ -142,11 +142,6 @@ var
    tmpL: lista;
    i: integer;
 begin
-     {check out of bounds, if so exit}
-     if ((pos < 1) AND (pos > L_SIZE(l))) then RunError(201);
-
-
-     {new(tmpL);}
      tmpL:= L;
 
      for i:=1 to pos-1 do tmpL:= tmpL^.sig;

@@ -135,6 +135,26 @@ Begin
      L_GET:= tmpL^.d;
 end;
 
+{return the list element at that pos}
+{used to improve efficiency}
+procedure L_GETN(var L,N: lista; pos: integer);
+var
+   tmpL: lista;
+   i: integer;
+begin
+     {check out of bounds, if so exit}
+     if ((pos < 1) AND (pos > L_SIZE(l))) then RunError(201);
+
+
+     {new(tmpL);}
+     tmpL:= L;
+
+     for i:=1 to pos-1 do tmpL:= tmpL^.sig;
+
+     N:= tmpL;
+end;
+
+
 procedure L_REMOVE(var L: lista; i: integer);
 Begin
 end;
@@ -231,10 +251,23 @@ end;
 procedure L_SUB(var L,E: lista; n1,n2: integer);
 var
    i: integer;
+   tmpL: lista;
 begin
      L_REMOVE_ALL(E);
+     {go to n1 in first list}
+     L_GETN(L,tmpL,n1);
+
      for i:=n1 to n2 do
-         L_ADD(E,L_GET(L,i));
+         begin
+         L_ADD(E,tmpl^.d);
+         {
+         I could use tmpL^.sig to improve speed
+         but I choose L_GETN for range checking
+         and modularity
+         }
+         {tmpL:= tmpL^.sig;}
+         L_GETN(tmpL,tmpL, 1);
+         end;
 end;
 
 

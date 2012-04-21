@@ -47,7 +47,7 @@ BEGIN
 
      writeln;
      writeln('sub list: ');
-     L_SUB(l,laux,3,6);
+     L_SUB(l,laux,1,1);
      for c:=1 to L_SIZE(laux) do writeln(L_GET(laux,c));
 
 

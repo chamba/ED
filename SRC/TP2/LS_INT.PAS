@@ -109,7 +109,8 @@ Begin
        end;
 
    new(aux00);
-   if (aux00<>nil) then aux00^.d  := e;
+   {if (aux00<>nil) then}
+   aux00^.d  := e;
    tmp00^.sig:= aux00;
    aux00^.sig:= tmp01;
 
@@ -123,10 +124,7 @@ var
 Begin
 
      {check out of bounds, if so exit}
-     isError:= false;
-     if (pos<1) then isError:= true;
-     if (pos>L_SIZE(l)) then isError:= true;
-     if isError then RunError(201);
+     if ((pos < 1) AND (pos > L_SIZE(l))) then RunError(201);
 
 
      {new(tmpL);}

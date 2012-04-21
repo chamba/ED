@@ -99,8 +99,8 @@ Begin
    to set the list
    }
 
-   new(tmp00);
-   new(tmp01);
+   {new(tmp00);}
+   {new(tmp01);}
 
    for auxi:=0 to i do
        begin
@@ -109,7 +109,7 @@ Begin
        end;
 
    new(aux00);
-   if (aux00<>nil) then  aux00^.d  := e;
+   if (aux00<>nil) then aux00^.d  := e;
    tmp00^.sig:= aux00;
    aux00^.sig:= tmp01;
 
@@ -129,7 +129,7 @@ Begin
      if isError then RunError(201);
 
 
-     new(tmpL);
+     {new(tmpL);}
      tmpL:= L;
 
      for i:=1 to pos-1 do tmpL:= tmpL^.sig;
@@ -150,7 +150,7 @@ Var
    tmpL: lista;
    i: integer;
 Begin
-     new(tmpL);
+     {new(tmpL);}
      tmpL:= L;
      i:= 1;
 
@@ -184,19 +184,20 @@ Var
    i: integer;
    aux: lista;
 Begin
-     i:= 1;
-     new(aux);
+     {i:= 1;}
+     {new(aux);}
      aux:= L;
 
      if L <> NIL
         then begin
+             i:= 1;
              while (aux^.sig<>nil) do
-             begin
-             inc(i);
-             aux:= aux^.sig;
-             end;
-        L_SIZE:= i;
-        end
+                   begin
+                   inc(i);
+                   aux:= aux^.sig;
+                   end;
+             L_SIZE:= i;
+             end
         else L_SIZE:= -1;
 end;
 
@@ -206,7 +207,7 @@ var
   aux: lista;
 begin
      c:=0;
-     new(aux);
+     {new(aux);}
      aux:= L;
      for i:=1 to L_SIZE(L) do
          begin
